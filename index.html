@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Temesgen || Abdissa" />
+    <!-- Development CSP - Make more restrictive for production -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self' data: https:;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https: blob:;
+      style-src 'self' 'unsafe-inline' https:;
+      img-src 'self' data: blob: https:;
+      font-src 'self' https: data:;
+      connect-src 'self' https: ws: wss:;
+      media-src 'self' https: blob:;
+      worker-src 'self' blob: data: 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval';
+      child-src 'self' blob: data:;
+      frame-src 'self' https:;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      block-all-mixed-content;
+      upgrade-insecure-requests;
+      require-trusted-types-for 'script';">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload main font with font-display: swap -->
+    <link 
+      rel="preload" 
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" 
+      as="style" 
+      onload="this.onload=null;this.rel='stylesheet'"
+    >
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"></noscript>
+    
+    <!-- Preload monospace font -->
+    <link 
+      rel="preload" 
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" 
+      as="style" 
+      onload="this.onload=null;this.rel='stylesheet'"
+    >
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+    
+    <!-- Fallback font faces -->
+    <style>
+      /* System font stack as fallback */
+      @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Roboto'), local('Roboto-Regular'),
+             url('https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2') format('woff2');
+      }
+      
+      @font-face {
+        font-family: 'Roboto Mono';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Roboto Mono'), local('RobotoMono-Regular'),
+             url('https://fonts.gstatic.com/s/robotomono/v22/L0x5DF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vq_SeW4Ep0CJpY3dJg.woff') format('woff');
+      }
+      
+      /* Set base font to system font stack initially */
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+    </style>
+    
+    <title>Temesgen || Abdissa</title>
+    
+    <!-- Critical CSS -->
+    <style>
+      /* Add any critical CSS here */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Load non-critical CSS asynchronously -->
+    <script>
+      // Load non-critical CSS
+      function loadCSS(href) {
+        var link = document.createElement('link');
+        link.href = href;
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        document.head.appendChild(link);
+      }
+      
+      // Load fonts after the page has loaded
+      window.addEventListener('load', function() {
+        // Load any additional non-critical CSS here
+      });
+      
+      // Fallback for browsers that don't support preload
+      var preloadLinks = document.querySelectorAll('link[rel="preload"][as="style"]');
+      preloadLinks.forEach(function(link) {
+        link.onload = function() {
+          this.rel = 'stylesheet';
+        };
+      });
+    </script>
+  </body>
+</html>
