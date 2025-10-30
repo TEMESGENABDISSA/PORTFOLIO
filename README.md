@@ -1,82 +1,44 @@
+# Temesgen's 3D Portfolio
+
 <p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=40&duration=3000&color=8A2BE2&center=true&vCenter=true&width=600&height=80&lines=✨+Temesgen's+3D+Portfolio+✨" alt="Temesgen's 3D Portfolio">
 </p>
 
-<div align="center">
-  <p>An immersive 3D portfolio showcasing my work, skills, and experience as a developer.</p>
-  
-  <div>
-    <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" />
-    <img src="https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=threedotjs&logoColor=white" alt="Three.js" />
-    <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
-    <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" />
-  </div>
-  
-  <p>
-    <a href="https://your-portfolio-url.com">Live Demo</a> • 
-    <a href="#getting-started">Getting Started</a> • 
-    <a href="#features">Features</a> • 
-    <a href="#tech-stack">Tech Stack</a>
-  </p>
-</div>
-
-## ✨ Features
+<p align="center">
+  An immersive 3D portfolio showcasing my work, skills, and experience as a Full Stack Developer.
+</p>
 
 <div align="center">
-  <table>
-    <tr>
-      <td width="50%" valign="top">
-        <h3>🌌 3D Experience</h3>
-        <ul>
-          <li>Interactive 3D elements with Three.js & React Three Fiber</li>
-          <li>Dynamic 3D Earth model in contact section</li>
-          <li>Responsive 3D stars background</li>
-        </ul>
-      </td>
-      <td width="50%" valign="top">
-        <h3>🎨 Modern UI/UX</h3>
-        <ul>
-          <li>Smooth animations with Framer Motion</li>
-          <li>Fully responsive design</li>
-          <li>Modern gradient color scheme</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td width="50%" valign="top">
-        <h3>💡 Key Features</h3>
-        <ul>
-          <li>Interactive project showcase</li>
-          <li>Skills visualization with 3D geometries</li>
-          <li>Animated work experience timeline</li>
-        </ul>
-      </td>
-      <td width="50%" valign="top">
-        <h3>⚡ Performance</h3>
-        <ul>
-          <li>Code splitting & lazy loading</li>
-          <li>Optimized 3D assets</li>
-          <li>Efficient state management</li>
-        </ul>
-      </td>
-    </tr>
-  </table>
+  <a href="#tech-stack">Tech Stack</a> •
+  <a href="#features">Features</a> •
+  <a href="#getting-started">Getting Started</a>
 </div>
+
+## 🚀 Features
+
+- **Interactive 3D Elements** - Built with Three.js and React Three Fiber
+- **Modern UI/UX** - Smooth animations with Framer Motion
+- **Responsive Design** - Works on all device sizes
+- **Project Showcase** - Highlighting my best work
+- **Contact Form** - Powered by EmailJS
 
 ## 🛠️ Tech Stack
 
-### Core Technologies
-- **Frontend**: React 18, Vite
-- **3D Graphics**: Three.js, React Three Fiber, Drei
-- **Styling**: Tailwind CSS, Framer Motion
-- **Form Handling**: EmailJS
-- **Routing**: React Router DOM
-- **Icons**: React Icons
+### Frontend
+- React 18
+- Vite
+- Tailwind CSS
+- Framer Motion
 
-### Development Tools
-- **Package Manager**: npm / Yarn
-- **Linting**: ESLint
-- **Version Control**: Git
+### 3D Graphics
+- Three.js
+- React Three Fiber
+- Drei
+
+### Other Libraries
+- React Router DOM
+- React Icons
+- EmailJS
 
 ## 🚀 Getting Started
 
@@ -88,8 +50,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/temesgen-3d-portfolio.git
-   cd temesgen-3d-portfolio
+   git clone https://github.com/TEMESGENABDISSA/PORTFOLIO.git
+   cd temesgen-3d
    ```
 
 2. **Install dependencies**
@@ -100,7 +62,7 @@
    ```
 
 3. **Set up environment variables**
-   Create a `.env` file in the root directory with:
+   Create a `.env` file in the root directory:
    ```env
    VITE_APP_EMAILJS_SERVICE_ID=your_service_id
    VITE_APP_EMAILJS_TEMPLATE_ID=your_template_id
@@ -119,14 +81,12 @@
 
 ```
 src/
-├── assets/           # Static assets (images, 3D models, etc.)
-├── components/       # Reusable React components
+├── assets/           # Images and 3D models
+├── components/       # React components
 │   ├── canvas/       # 3D components
-│   ├── sections/     # Page sections
-│   └── ui/           # UI components
-├── constants/        # Constants and data
-├── styles/           # Global styles
-└── utils/            # Utility functions
+│   └── ...           # Other components
+├── constants/        # Data and configurations
+└── utils/            # Helper functions
 ```
 
 ## 🛠️ Available Scripts
@@ -142,641 +102,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- [Three.js](https://threejs.org/) - For the amazing 3D library
-- [React Three Fiber](https://github.com/pmndrs/react-three-fiber) - For the React renderer
-- [Framer Motion](https://www.framer.com/motion/) - For smooth animations
-- [Tailwind CSS](https://tailwindcss.com/) - For utility-first CSS
-- [EmailJS](https://www.emailjs.com/) - For contact form functionality
-  git,
-  figma,
-  docker,
-  meta,
-  starbucks,
-  tesla,
-  shopify,
-  carrent,
-  jobit,
-  tripguide,
-  threejs,
-} from "../assets";
-
-export const navLinks = [
-  {
-    id: "about",
-    title: "About",
-  },
-  {
-    id: "work",
-    title: "Work",
-  },
-  {
-    id: "contact",
-    title: "Contact",
-  },
-];
-
-const services = [
-  {
-    title: "Web Developer",
-    icon: web,
-  },
-  {
-    title: "React Native Developer",
-    icon: mobile,
-  },
-  {
-    title: "Backend Developer",
-    icon: backend,
-  },
-  {
-    title: "Content Creator",
-    icon: creator,
-  },
-];
-
-const technologies = [
-  {
-    name: "HTML 5",
-    icon: html,
-  },
-  {
-    name: "CSS 3",
-    icon: css,
-  },
-  {
-    name: "JavaScript",
-    icon: javascript,
-  },
-  {
-    name: "TypeScript",
-    icon: typescript,
-  },
-  {
-    name: "React JS",
-    icon: reactjs,
-  },
-  {
-    name: "Redux Toolkit",
-    icon: redux,
-  },
-  {
-    name: "Tailwind CSS",
-    icon: tailwind,
-  },
-  {
-    name: "Node JS",
-    icon: nodejs,
-  },
-  {
-    name: "MongoDB",
-    icon: mongodb,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "git",
-    icon: git,
-  },
-  {
-    name: "figma",
-    icon: figma,
-  },
-  {
-    name: "docker",
-    icon: docker,
-  },
-];
-
-const experiences = [
-  {
-    title: "React.js Developer",
-    company_name: "Starbucks",
-    icon: starbucks,
-    iconBg: "#383E56",
-    date: "March 2020 - April 2021",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    title: "React Native Developer",
-    company_name: "Tesla",
-    icon: tesla,
-    iconBg: "#E6DEDD",
-    date: "Jan 2021 - Feb 2022",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    title: "Web Developer",
-    company_name: "Shopify",
-    icon: shopify,
-    iconBg: "#383E56",
-    date: "Jan 2022 - Jan 2023",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    title: "Full stack Developer",
-    company_name: "Meta",
-    icon: meta,
-    iconBg: "#E6DEDD",
-    date: "Jan 2023 - Present",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-];
-
-const testimonials = [
-  {
-    testimonial:
-      "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-    name: "Sara Lee",
-    designation: "CFO",
-    company: "Acme Co",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
-  },
-  {
-    testimonial:
-      "I've never met a web developer who truly cares about their clients' success like Rick does.",
-    name: "Chris Brown",
-    designation: "COO",
-    company: "DEF Corp",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
-  },
-  {
-    testimonial:
-      "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "Lisa Wang",
-    designation: "CTO",
-    company: "456 Enterprises",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
-  },
-];
-
-const projects = [
-  {
-    name: "Car Rent",
-    description:
-      "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "mongodb",
-        color: "green-text-gradient",
-      },
-      {
-        name: "tailwind",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: carrent,
-    source_code_link: "https://github.com/",
-  },
-  {
-    name: "Job IT",
-    description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "restapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "scss",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: jobit,
-    source_code_link: "https://github.com/",
-  },
-  {
-    name: "Trip Guide",
-    description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-    tags: [
-      {
-        name: "nextjs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "supabase",
-        color: "green-text-gradient",
-      },
-      {
-        name: "css",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: tripguide,
-    source_code_link: "https://github.com/",
-  },
-];
-
-export { services, technologies, experiences, testimonials, projects };
-```
-</details>
-
-<details>
-<summary><code>index.css</code></summary>
-
-```css
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-  scroll-behavior: smooth;
-  color-scheme: dark;
-}
-
-.hash-span {
-  margin-top: -100px;
-  padding-bottom: 100px;
-  display: block;
-}
-
-.black-gradient {
-  background: #000000; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #434343,
-    #000000
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #434343,
-    #000000
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.violet-gradient {
-  background: #804dee;
-  background: linear-gradient(-90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
-  background: -webkit-linear-gradient(
-    -90deg,
-    #804dee 0%,
-    rgba(60, 51, 80, 0) 100%
-  );
-}
-
-.green-pink-gradient {
-  background: "#00cea8";
-  background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
-  background: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
-}
-
-.orange-text-gradient {
-  background: #f12711; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #f12711,
-    #f5af19
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #f12711,
-    #f5af19
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.green-text-gradient {
-  background: #11998e; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #11998e,
-    #38ef7d
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #11998e,
-    #38ef7d
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.blue-text-gradient {
-  /* background: -webkit-linear-gradient(#eee, #333); */
-  background: #56ccf2; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #2f80ed,
-    #56ccf2
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #2f80ed,
-    #56ccf2
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.pink-text-gradient {
-  background: #ec008c; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #ec008c,
-    #fc6767
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #ec008c,
-    #fc6767
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* canvas- styles */
-.canvas-loader {
-  font-size: 10px;
-  width: 1em;
-  height: 1em;
-  border-radius: 50%;
-  position: relative;
-  text-indent: -9999em;
-  animation: mulShdSpin 1.1s infinite ease;
-  transform: translateZ(0);
-}
-
-@keyframes mulShdSpin {
-  0%,
-  100% {
-    box-shadow: 0em -2.6em 0em 0em #ffffff,
-      1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
-      2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-      1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-      0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-      -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-      -2.6em 0em 0 0em rgba(255, 255, 255, 0.5),
-      -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7);
-  }
-  12.5% {
-    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.7),
-      1.8em -1.8em 0 0em #ffffff, 2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-      1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-      0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-      -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-      -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
-      -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5);
-  }
-  25% {
-    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.5),
-      1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7), 2.5em 0em 0 0em #ffffff,
-      1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-      0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-      -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-      -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
-      -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
-  }
-  37.5% {
-    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
-      1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5),
-      2.5em 0em 0 0em rgba(255, 255, 255, 0.7), 1.75em 1.75em 0 0em #ffffff,
-      0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-      -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-      -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
-      -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
-  }
-  50% {
-    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
-      1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
-      2.5em 0em 0 0em rgba(255, 255, 255, 0.5),
-      1.75em 1.75em 0 0em rgba(255, 255, 255, 0.7), 0em 2.5em 0 0em #ffffff,
-      -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
-      -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
-      -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
-  }
-  62.5% {
-    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
-      1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
-      2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-      1.75em 1.75em 0 0em rgba(255, 255, 255, 0.5),
-      0em 2.5em 0 0em rgba(255, 255, 255, 0.7), -1.8em 1.8em 0 0em #ffffff,
-      -2.6em 0em 0 0em rgba(255, 255, 255, 0.2),
-      -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
-  }
-  75% {
-    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
-      1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
-      2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-      1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-      0em 2.5em 0 0em rgba(255, 255, 255, 0.5),
-      -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.7), -2.6em 0em 0 0em #ffffff,
-      -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
-  }
-  87.5% {
-    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2),
-      1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
-      2.5em 0em 0 0em rgba(255, 255, 255, 0.2),
-      1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
-      0em 2.5em 0 0em rgba(255, 255, 255, 0.2),
-      -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5),
-      -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
-  }
-}
-```
-</details>
-
-<details>
-<summary><code>Motion.js</code></summary>
-
-```javascript
-export const textVariant = (delay) => {
-  return {
-    hidden: {
-      y: -50,
-      opacity: 0,
-    },
-    show: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        duration: 1.25,
-        delay: delay,
-      },
-    },
-  };
-};
-
-export const fadeIn = (direction, type, delay, duration) => {
-  return {
-    hidden: {
-      x: direction === "left" ? 100 : direction === "right" ? -100 : 0,
-      y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
-      opacity: 0,
-    },
-    show: {
-      x: 0,
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: type,
-        delay: delay,
-        duration: duration,
-        ease: "easeOut",
-      },
-    },
-  };
-};
-
-export const zoomIn = (delay, duration) => {
-  return {
-    hidden: {
-      scale: 0,
-      opacity: 0,
-    },
-    show: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "tween",
-        delay: delay,
-        duration: duration,
-        ease: "easeOut",
-      },
-    },
-  };
-};
-
-export const slideIn = (direction, type, delay, duration) => {
-  return {
-    hidden: {
-      x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
-      y: direction === "up" ? "100%" : direction === "down" ? "100%" : 0,
-    },
-    show: {
-      x: 0,
-      y: 0,
-      transition: {
-        type: type,
-        delay: delay,
-        duration: duration,
-        ease: "easeOut",
-      },
-    },
-  };
-};
-
-export const staggerContainer = (staggerChildren, delayChildren) => {
-  return {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: staggerChildren,
-        delayChildren: delayChildren || 0,
-      },
-    },
-  };
-};
-```
-</details>
-
-<details>
-<summary><code>styles.js</code></summary>
-
-```javascript
-const styles = {
-  paddingX: "sm:px-16 px-6",
-  paddingY: "sm:py-16 py-6",
-  padding: "sm:px-16 px-6 sm:py-16 py-10",
-
-  heroHeadText:
-    "font-black text-white lg:text-[80px] sm:text-[60px] xs:text-[50px] text-[40px] lg:leading-[98px] mt-2",
-  heroSubText:
-    "text-[#dfd9ff] font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]",
-
-  sectionHeadText:
-    "text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]",
-  sectionSubText:
-    "sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider",
-};
-
-export { styles };
-```
-
-</details>
-
-<details>
-<summary><code>tailwind.config.cjs</code></summary>
-
-```javascript
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{js,jsx}"],
-  mode: "jit",
-  theme: {
-    extend: {
-      colors: {
-        primary: "#050816",
-        secondary: "#aaa6c3",
-        tertiary: "#151030",
-        "black-100": "#100d25",
-        "black-200": "#090325",
-        "white-100": "#f3f3f3",
-      },
-      boxShadow: {
-        card: "0px 35px 120px -15px #211e35",
-      },
-      screens: {
-        xs: "450px",
-      },
-      backgroundImage: {
-        "hero-pattern": "url('/src/assets/herobg.png')",
-      },
-    },
-  },
-  plugins: [],
-};
-```
-
-</details>
-
-## <a name="links">🔗 Links</a>
-
-Models and Assets used in the project can be found [here](https://drive.google.com/drive/folders/1KVU8iaH0E_JFtShNiR3BgCSA3pawXY4Z)
-
-## <a name="more">🚀 More</a>
-
-**Advance your skills with Next.js Pro Course**
-
-Enjoyed creating this project? Dive deeper into our PRO courses for a richer learning experience. They're packed with detailed explanations, cool features, and exercises to boost your skills. Give it a go!
-
-<a href="https://www.jsmastery.pro/ultimate-next-course" target="_blank">
-<img src="https://i.ibb.co/804sPK6/Image-720.png" alt="Project Banner">
-</a>
+- [Three.js](https://threejs.org/) - 3D library
+- [React Three Fiber](https://github.com/pmndrs/react-three-fiber) - React renderer
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS
