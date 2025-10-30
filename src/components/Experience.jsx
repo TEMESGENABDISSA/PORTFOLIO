@@ -8,53 +8,64 @@ const ExperienceCard = ({ experience, index, isActive, onClick, onHoverStart, on
   return (
     <motion.div
       variants={fadeIn("right", "spring", 0.1 * index, 0.75)}
-      className="relative group cursor-pointer"
+      className={`relative group cursor-pointer p-4 rounded-xl transition-all duration-300 ${
+        isActive 
+          ? 'bg-gradient-to-br from-[#1a1a2e] to-[#16213e] shadow-lg border border-[#7c4dff]/30' 
+          : 'hover:bg-[#1a1a2e]/50'
+      }`}
       onClick={onClick}
       onHoverStart={onHoverStart}
       onHoverEnd={onHoverEnd}
       whileHover={{ 
-        scale: 1.02,
+        y: -5,
         transition: { type: 'spring', stiffness: 400, damping: 10 }
       }}
     >
-      <div className="flex items-center">
-        <motion.div 
-          className={`w-6 h-6 rounded-full flex items-center justify-center z-10 ${
-            isActive ? 'bg-[#915EFF]' : 'bg-gray-700 group-hover:bg-[#7c4dff]'
-          } transition-all duration-300`}
-          whileHover={{ scale: 1.1 }}
-        >
-          {isActive && (
-            <motion.div 
-              className="w-2 h-2 bg-white rounded-full"
-              layoutId="activeDot"
-            />
+      <div className="flex items-start gap-4">
+        <div className="relative">
+          <motion.div 
+            className={`w-4 h-4 rounded-full flex items-center justify-center z-10 mt-1 ${
+              isActive ? 'bg-[#915EFF]' : 'bg-gray-600 group-hover:bg-[#7c4dff]'
+            } transition-all duration-300`}
+            whileHover={{ scale: 1.2 }}
+          >
+            {isActive && (
+              <motion.div 
+                className="w-2 h-2 bg-white rounded-full"
+                layoutId="activeDot"
+              />
+            )}
+          </motion.div>
+          {!isActive && (
+            <div className="absolute left-1.5 top-6 w-0.5 h-full bg-gradient-to-b from-[#7c4dff] to-transparent opacity-40" />
           )}
-        </motion.div>
-        <div className="hidden md:block w-full h-0.5 bg-gradient-to-r from-[#915EFF] to-transparent opacity-70" />
+        </div>
+        
+        <div className="flex-1">
+          <div className="flex items-center gap-3 mb-1">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#7c4dff] to-[#651fff] p-1.5 flex-shrink-0">
+              <img 
+                src={experience.icon} 
+                alt={experience.company_name}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div>
+              <h3 className="text-white font-bold text-lg group-hover:text-[#915EFF] transition-colors">
+                {experience.company_name}
+              </h3>
+              <p className="text-gray-400 text-sm">{experience.title}</p>
+            </div>
+          </div>
+          <p className="text-xs text-gray-500 ml-11">{experience.date}</p>
+        </div>
       </div>
-      
-      <motion.div 
-        className="mt-4 ml-8 p-1"
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ 
-          opacity: isActive ? 1 : 0.7,
-          x: isActive ? 0 : -10 
-        }}
-        transition={{ duration: 0.3 }}
-      >
-        <p className="text-sm text-gray-400">{experience.date}</p>
-        <h3 className="text-white font-bold text-xl group-hover:text-[#915EFF] transition-colors">
-          {experience.company_name}
-        </h3>
-        <p className="text-gray-300 text-sm">{experience.title}</p>
-      </motion.div>
     </motion.div>
   );
 };
 
-const ExperienceDetails = ({ experience, isVisible, cursorX, cursorY }) => {
-  if (!isVisible) return null;
+const ExperienceDetails = ({ experience, isVisible }) => {
+  if (!isVisible || !experience) return null;
   
   const ref = useRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -81,71 +92,108 @@ const ExperienceDetails = ({ experience, isVisible, cursorX, cursorY }) => {
   
   return (
     <motion.div 
-      className="md:pl-12 mt-8 md:mt-0 relative overflow-hidden"
+      className="md:pl-8 lg:pl-12 mt-8 md:mt-0 relative overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
     >
       <motion.div 
         ref={ref}
-        className="relative bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl shadow-2xl border border-gray-800 overflow-hidden"
+        className="relative bg-gradient-to-br from-[#0f0f17] to-[#1a1a2e] p-6 md:p-8 rounded-2xl shadow-2xl border border-[#2a2a42] overflow-hidden"
         whileHover={{ 
           y: -5,
-          boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2)'
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+          borderColor: '#7c4dff40'
         }}
-        transition={{ type: 'spring', stiffness: 300 }}
+        transition={{ 
+          type: 'spring', 
+          stiffness: 300,
+          damping: 20
+        }}
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
       >
+        {/* Animated gradient highlight */}
         <motion.div 
           className="absolute inset-0 pointer-events-none"
           style={{
             background: `radial-gradient(600px at ${position.x}px ${position.y}px, rgba(145, 94, 255, 0.1), transparent 70%)`,
             opacity: isHovered ? 1 : 0,
-            transition: 'opacity 0.3s ease',
+            transition: 'opacity 0.4s ease-out',
           }}
         />
-        <div className="flex items-center mb-6">
-          <div className="p-3 rounded-xl bg-gradient-to-br from-[#7c4dff] to-[#651fff] shadow-lg">
+        
+        {/* Header with logo and title */}
+        <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-8">
+          <div className="w-24 h-24 md:w-28 md:h-28 rounded-xl bg-gradient-to-br from-[#7c4dff] to-[#651fff] p-3 flex items-center justify-center flex-shrink-0">
             <img 
               src={experience.icon} 
               alt={experience.company_name}
-              className="w-10 h-10 object-contain"
+              className="w-full h-full object-contain"
+              style={{
+                filter: 'drop-shadow(0 0 10px rgba(145, 94, 255, 0.3))',
+              }}
             />
           </div>
-          <div className="ml-4">
-            <h3 className="text-2xl font-bold text-white">{experience.role}</h3>
-            <p className="text-gray-400">{experience.company_name}</p>
+          
+          <div>
+            <div className="inline-block px-3 py-1 bg-[#7c4dff]/10 text-[#b794ff] text-xs font-medium rounded-full mb-2 border border-[#7c4dff]/20">
+              {experience.date}
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-1">
+              {experience.role}
+            </h2>
+            <h3 className="text-lg text-[#b794ff] font-medium">
+              {experience.company_name}
+            </h3>
           </div>
         </div>
         
-        <ul className="space-y-3">
-          {experience.points.map((point, i) => (
+        {/* Experience points */}
+        <ul className="space-y-4 mb-8">
+          {experience.points?.map((point, i) => (
             <motion.li 
-              key={i} 
-              className="flex items-start text-gray-300"
+              key={i}
+              className="group relative pl-6"
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.1 * i }}
+              transition={{ 
+                delay: 0.05 * i,
+                type: 'spring',
+                stiffness: 300,
+                damping: 20
+              }}
             >
-              <span className="text-[#915EFF] mr-3 mt-1">▹</span>
-              <span className="leading-relaxed">{point}</span>
+              <div className="absolute left-0 top-2 w-2 h-2 rounded-full bg-[#7c4dff] transform group-hover:scale-150 transition-transform" />
+              <p className="text-gray-300 leading-relaxed">
+                {point}
+              </p>
             </motion.li>
           ))}
         </ul>
         
+        {/* Skills/Tech Stack */}
         {experience.skills && (
-          <div className="mt-6 pt-6 border-t border-gray-800">
-            <h4 className="text-sm font-semibold text-gray-400 mb-3">TECHNOLOGIES USED</h4>
+          <div className="pt-6 border-t border-[#2a2a42]">
+            <h4 className="text-sm font-semibold text-gray-400 mb-4 flex items-center">
+              <span className="mr-2">🛠️</span> TECHNOLOGIES USED
+            </h4>
             <div className="flex flex-wrap gap-2">
               {experience.skills.map((skill, i) => (
-                <span 
+                <motion.span 
                   key={i}
-                  className="px-3 py-1 text-xs font-medium bg-gray-800 text-gray-200 rounded-full"
+                  className="px-3 py-1.5 text-xs font-medium bg-[#1e1e2d] text-gray-200 rounded-full border border-[#2a2a42] hover:border-[#7c4dff]/50 hover:text-white transition-all"
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + (i * 0.05) }}
+                  whileHover={{ 
+                    y: -2,
+                    boxShadow: '0 4px 12px rgba(124, 77, 255, 0.15)'
+                  }}
                 >
                   {skill}
-                </span>
+                </motion.span>
               ))}
             </div>
           </div>
@@ -228,6 +276,10 @@ const Experience = () => {
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] opacity-30 animate-gradient-slow" />
+      </div>
       {/* Custom Cursor */}
       <motion.div
         className="fixed w-8 h-8 rounded-full border-2 pointer-events-none z-50 backdrop-blur-sm"
@@ -238,82 +290,79 @@ const Experience = () => {
           y: cursorYSpring,
         }}
       />
-      <motion.div 
-        variants={textVariant()} 
-        className="text-center mb-20"
-      >
-        <motion.p 
-          className="text-sm text-[#915EFF] font-mono mb-2"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          My Professional Journey
-        </motion.p>
-        <motion.h2 
-          className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          Work Experience
-        </motion.h2>
+      
+      <div className="max-w-6xl mx-auto relative">
         <motion.div 
-          className="w-20 h-1 bg-gradient-to-r from-[#915EFF] to-[#651fff] mx-auto mt-4 rounded-full"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ delay: 0.4, type: 'spring', stiffness: 300 }}
-        />
-      </motion.div>
+          variants={textVariant()} 
+          className="text-center mb-16 md:mb-24 relative z-10"
+        >
+          <motion.p 
+            className="text-sm text-[#b388ff] font-mono mb-3 tracking-widest"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            What I've learned so far
+          </motion.p>
+          <motion.h2 
+            className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-[#b388ff] mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ 
+              opacity: 1, 
+              y: 0,
+              transition: { 
+                delay: 0.1,
+                type: 'spring',
+                stiffness: 100,
+                damping: 10
+              }
+            }}
+          >
+            Experience & Education
+          </motion.h2>
+          <motion.div 
+            className="w-20 h-1 bg-gradient-to-r from-[#7c4dff] to-[#b388ff] mx-auto rounded-full"
+            initial={{ scaleX: 0 }}
+            animate={{ 
+              scaleX: 1,
+              transition: { delay: 0.3 }
+            }}
+          />
+        </motion.div>
 
-      <motion.div 
-        className="relative"
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.25 }}
-      >
-        <div className="hidden md:block absolute left-[calc(25%+8px)] w-0.5 h-full bg-gradient-to-b from-[#915EFF] to-transparent top-0"></div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-1">
-            <div className="sticky top-24 space-y-12">
-              {experiences.map((exp, index) => {
-                const isActive = activeIndex === index;
-                const isHovered = hoveredIndex === index;
-                
-                return (
-                  <ExperienceCard 
-                    key={`exp-${index}`}
-                    experience={exp}
-                    index={index}
-                    isActive={isActive}
-                    onClick={() => setActiveIndex(index)}
-                    onHoverStart={() => handleCardHover(index)}
-                    onHoverEnd={handleCardLeave}
-                  />
-                );
-              })}
-            </div>
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
+          {/* Scroll indicator */}
+          <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 -top-16 w-px h-16 bg-gradient-to-b from-transparent to-[#7c4dff] opacity-70" />
           
-          <div className="md:col-span-3">
+          {/* Experience Cards */}
+          <div className="space-y-6 relative">
+            <div className="absolute -left-4 top-0 h-full w-0.5 bg-gradient-to-b from-[#7c4dff] via-[#b388ff] to-transparent opacity-30" />
+            {experiences.map((exp, index) => (
+              <div key={`exp-${exp.id}-${index}`} onClick={() => setActiveIndex(index)}>
+                <ExperienceCard
+                  key={`exp-card-${exp.id}-${index}`}
+                  experience={exp}
+                  index={index}
+                  isActive={activeIndex === index}
+                  onClick={() => setActiveIndex(index)}
+                  onHoverStart={() => handleCardHover(index)}
+                  onHoverEnd={handleCardLeave}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Experience Details */}
+          <div className="lg:col-span-2 relative">
+            <div className="absolute -left-8 top-0 h-full w-0.5 bg-gradient-to-b from-transparent via-[#7c4dff] to-transparent opacity-30" />
             <AnimatePresence mode="wait">
               <ExperienceDetails 
-                key={activeIndex}
                 experience={experiences[activeIndex]} 
-                isVisible={true}
-                cursorX={cursorX}
-                cursorY={cursorY}
+                isVisible={true} 
               />
             </AnimatePresence>
           </div>
         </div>
-      </motion.div>
-      
-      {/* Decorative elements */}
-      <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-[#915EFF] rounded-full filter blur-3xl opacity-10 -z-10"></div>
-      <div className="absolute -left-20 top-1/3 w-48 h-48 bg-[#651fff] rounded-full filter blur-3xl opacity-10 -z-10"></div>
+      </div>
     </section>
   );
 };

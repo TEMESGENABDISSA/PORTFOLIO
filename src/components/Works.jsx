@@ -76,20 +76,30 @@ const ProjectCard = ({
         <div className="relative z-10">
           <div
             onClick={() => deployment_link && window.open(deployment_link, "_blank")}
-            className="relative w-full h-[230px] cursor-pointer"
+            className="relative w-full h-[230px] cursor-pointer flex items-center justify-center bg-black/5 rounded-2xl overflow-hidden p-2"
           >
             <img
               src={image}
               alt="project_image"
-              className="w-full h-full object-cover rounded-2xl"
+              className={`w-full h-full ${
+                ['Emamu Mall', 'Airbnb Clone'].includes(name) ? 'object-contain' : 'object-cover'
+              }`}
+              style={{
+                maxWidth: '100%',
+                maxHeight: '100%',
+                objectFit: ['Emamu Mall', 'Airbnb Clone'].includes(name) ? 'contain' : 'cover',
+                padding: ['Emamu Mall', 'Airbnb Clone'].includes(name) ? '0.5rem' : '0'
+              }}
             />
 
             <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
               {/* GitHub icon */}
-              <div
+              <a
+                href={source_code_link}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={(e) => {
                   e.stopPropagation();
-                  window.open(source_code_link, "_blank");
                 }}
                 className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
               >
@@ -98,7 +108,7 @@ const ProjectCard = ({
                   alt="source code"
                   className="w-1/2 h-1/2 object-contain"
                 />
-              </div>
+              </a>
 
             {/* Only show View Project overlay if there's a deployment link */}
             {deployment_link && (
@@ -152,26 +162,39 @@ const ProjectCard = ({
 
 const Works = () => {
   return (
-    <div id="projects">
-      <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText}`}>My work</p>
-        <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
-      </motion.div>
-
-      <div className="w-full flex">
-        <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
-          className="mt-3 text-secondary-text text-[17px] max-w-3xl leading-[30px]"
+    <div id="projects" className="relative">
+      {/* Decorative elements */}
+      <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#915EFF] rounded-full filter blur-3xl opacity-10 -z-10" />
+      <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-[#00B4D8] rounded-full filter blur-3xl opacity-10 -z-10" />
+      
+      <div className="text-center">
+        <motion.div 
+          variants={textVariant()}
+          className="mb-8"
         >
-          Following projects showcases my skills and experience through
-          real-world examples of my work. Each project is briefly described with
-          links to code repositories and live demos in it. It reflects my
-          ability to solve complex problems, work with different technologies,
-          and manage projects effectively.
-        </motion.p>
+          <p className={`${styles.sectionSubText} text-transparent bg-clip-text bg-gradient-to-r from-[#915EFF] to-[#00B4D8]`}>
+            My Work
+          </p>
+          <h2 className={`${styles.sectionHeadText} text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300`}>
+            Projects
+          </h2>
+        </motion.div>
+
+        <motion.div 
+          className="mx-auto max-w-4xl px-4"
+          variants={fadeIn("", "", 0.1, 1)}
+        >
+          <p className="text-gray-300 text-lg leading-relaxed">
+            Following projects showcase my skills and experience through
+            real-world examples of my work. Each project is briefly described with
+            links to code repositories and live demos. They reflect my
+            ability to solve complex problems, work with different technologies,
+            and manage projects effectively.
+          </p>
+        </motion.div>
       </div>
 
-      <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 px-4 sm:px-0">
+      <div className="mt-10 mb-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 px-4 sm:px-0">
         {projects.map((project, index) => (
           <div key={`project-${index}`} className="w-full">
             <ProjectCard index={index} {...project} />

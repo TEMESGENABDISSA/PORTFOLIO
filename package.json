@@ -26,7 +26,8 @@
     "react-tilt": "^1.0.2",
     "react-type-animation": "^3.2.0",
     "react-vertical-timeline-component": "^3.6.0",
-    "three": "^0.149.0"
+    "three": "^0.149.0",
+    "typed.js": "^2.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",

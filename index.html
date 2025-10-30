@@ -2,28 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="icon" type="image/svg+xml" href="src\assets\logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Temesgen || Abdissa" />
-    <!-- Development CSP - Make more restrictive for production -->
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="
-      default-src 'self' data: https:;
-      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https: blob:;
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' http://localhost:* https: blob:;
       style-src 'self' 'unsafe-inline' https:;
       img-src 'self' data: blob: https:;
-      font-src 'self' https: data:;
-      connect-src 'self' https: ws: wss:;
-      media-src 'self' https: blob:;
-      worker-src 'self' blob: data: 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval';
-      child-src 'self' blob: data:;
+      font-src 'self' https: data: http://localhost:*;
+      connect-src 'self' https: wss: http://localhost:* ws://localhost:*;
+      media-src 'self' blob: https:;
+      worker-src 'self' blob: data: 'unsafe-inline' 'unsafe-eval' http://localhost:* https:;
       frame-src 'self' https:;
       object-src 'none';
       base-uri 'self';
       form-action 'self';
-      block-all-mixed-content;
+      trusted-types default * 'allow-duplicates';
+      ">
+    <!-- For production, you should use a more restrictive CSP -->
+    <!-- The following is a template for production CSP (commented out for now) -->
+    <!--
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https: blob: 'strict-dynamic';
+      style-src 'self' 'unsafe-inline' https: 'unsafe-hashes';
+      img-src 'self' data: blob: https:;
+      font-src 'self' https: data:;
+      connect-src 'self' https: wss:;
+      media-src 'self' blob: https:;
+      worker-src 'self' blob:;
+      frame-src 'self' https:;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
       upgrade-insecure-requests;
-      require-trusted-types-for 'script';">
+      block-all-mixed-content;
+      ">
+    -->
     
     <!-- Preload critical fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -95,6 +118,21 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <style>
+      /* Critical CSS for hero section to prevent layout shift */
+      .hero-bg {
+        background-color: #000; /* Fallback color */
+      }
+      /* Preload font-display strategy */
+      @font-face {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 300 900;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecg.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+    </style>
     
     <!-- Load non-critical CSS asynchronously -->
     <script>

@@ -1,146 +1,152 @@
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=40&duration=3000&color=8A2BE2&center=true&vCenter=true&width=600&height=80&lines=✨+Temesgen's+3D+Portfolio+✨" alt="Temesgen's 3D Portfolio">
+</p>
+
 <div align="center">
-  <br />
-    <a href="https://youtu.be/0fYi8SGA20k?feature=shared" target="_blank">
-      <img src="https://github.com/adrianhajdin/project_3D_developer_portfolio/assets/151519281/4722160a-8e61-403f-a905-728feae1f7e6" alt="Project Banner">
-    </a>
-  <br />
-
+  <p>An immersive 3D portfolio showcasing my work, skills, and experience as a developer.</p>
+  
   <div>
-    <img src="https://img.shields.io/badge/-React_JS-black?style=for-the-badge&logoColor=white&logo=react&color=61DAFB" alt="react.js" />
-    <img src="https://img.shields.io/badge/-Three_JS-black?style=for-the-badge&logoColor=white&logo=threedotjs&color=000000" alt="three.js" />
-    <img src="https://img.shields.io/badge/-Tailwind_CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=06B6D4" alt="tailwindcss" />
+    <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" />
+    <img src="https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=threedotjs&logoColor=white" alt="Three.js" />
+    <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+    <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" />
   </div>
-
-  <h3 align="center">A 3D Developer Portfolio</h3>
-
-   <div align="center">
-     Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
-    </div>
+  
+  <p>
+    <a href="https://your-portfolio-url.com">Live Demo</a> • 
+    <a href="#getting-started">Getting Started</a> • 
+    <a href="#features">Features</a> • 
+    <a href="#tech-stack">Tech Stack</a>
+  </p>
 </div>
 
-## 📋 <a name="table">Table of Contents</a>
+## ✨ Features
 
-1. 🤖 [Introduction](#introduction)
-2. ⚙️ [Tech Stack](#tech-stack)
-3. 🔋 [Features](#features)
-4. 🤸 [Quick Start](#quick-start)
-5. 🕸️ [Snippets](#snippets)
-6. 🔗 [Links](#links)
-7. 🚀 [More](#more)
+<div align="center">
+  <table>
+    <tr>
+      <td width="50%" valign="top">
+        <h3>🌌 3D Experience</h3>
+        <ul>
+          <li>Interactive 3D elements with Three.js & React Three Fiber</li>
+          <li>Dynamic 3D Earth model in contact section</li>
+          <li>Responsive 3D stars background</li>
+        </ul>
+      </td>
+      <td width="50%" valign="top">
+        <h3>🎨 Modern UI/UX</h3>
+        <ul>
+          <li>Smooth animations with Framer Motion</li>
+          <li>Fully responsive design</li>
+          <li>Modern gradient color scheme</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top">
+        <h3>💡 Key Features</h3>
+        <ul>
+          <li>Interactive project showcase</li>
+          <li>Skills visualization with 3D geometries</li>
+          <li>Animated work experience timeline</li>
+        </ul>
+      </td>
+      <td width="50%" valign="top">
+        <h3>⚡ Performance</h3>
+        <ul>
+          <li>Code splitting & lazy loading</li>
+          <li>Optimized 3D assets</li>
+          <li>Efficient state management</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
 
-## 🚨 Tutorial
+## 🛠️ Tech Stack
 
-This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>. 
+### Core Technologies
+- **Frontend**: React 18, Vite
+- **3D Graphics**: Three.js, React Three Fiber, Drei
+- **Styling**: Tailwind CSS, Framer Motion
+- **Form Handling**: EmailJS
+- **Routing**: React Router DOM
+- **Icons**: React Icons
 
-If you prefer visual learning, this is the perfect resource for you. Follow our tutorial to learn how to build projects like these step-by-step in a beginner-friendly manner!
+### Development Tools
+- **Package Manager**: npm / Yarn
+- **Linting**: ESLint
+- **Version Control**: Git
 
-<a href="https://youtu.be/0fYi8SGA20k?feature=shared" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/1736fca5-a031-4854-8c09-bc110e3bc16d" /></a>
+## 🚀 Getting Started
 
-## <a name="introduction">🤖 Introduction</a>
+### Prerequisites
+- Node.js (v16 or later)
+- npm (v7 or later) or Yarn
 
-By developing this project, you will gain hands-on experience in crafting immersive web experiences, mastering 3D libraries, and implementing engaging animations. The combination of creativity and technical skills showcased in this project serves as an excellent learning opportunity for developers seeking to enhance their portfolio and captivate users with cutting-edge web design.
+### Installation
 
-If you're getting started and need assistance or face any bugs, join our active Discord community with over 27k+ members. It's a place where people help each other out.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/temesgen-3d-portfolio.git
+   cd temesgen-3d-portfolio
+   ```
 
-<a href="https://discord.com/invite/n6EdbFJ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e" /></a>
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn
+   ```
 
-## <a name="tech-stack">⚙️ Tech Stack</a>
+3. **Set up environment variables**
+   Create a `.env` file in the root directory with:
+   ```env
+   VITE_APP_EMAILJS_SERVICE_ID=your_service_id
+   VITE_APP_EMAILJS_TEMPLATE_ID=your_template_id
+   VITE_APP_EMAILJS_PUBLIC_KEY=your_public_key
+   ```
 
-- React.js
-- Three.js
-- React Three Fiber
-- React Three Drei
-- Email JS
-- Vite
-- Tailwind CSS
+4. **Start the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+   Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
-## <a name="features">🔋 Features</a>
+## 📂 Project Structure
 
-👉 **Customizable 3D Hero Section**: Includes a 3D desktop model easily customizable to suit specific needs.
-
-👉 **Interactive Experience and Work Sections**: Utilizes animations powered by framer motion for engaging user experience.
-
-👉 **3D Skills Section**: Showcases skills using 3D geometries through three.js and React Three fiber
-
-👉 **Animated Projects and Testimonials**: Features animated sections using framer motion for projects and client testimonials.
-
-👉 **Contact Section with 3D Earth Model**:Integrates a 3D earth model with email functionality powered by emailjs.
-
-👉 **3D Stars**: Generate stars progressively at random positions using Three.js for background display.
-
-👉 **Consistent Animations**: Implements cohesive animations throughout the website using framer motion.
-
-👉 **Responsive Design**: Ensures optimal display and functionality across all devices.
-
-and many more, including code architecture and reusability 
-
-## <a name="quick-start">🤸 Quick Start</a>
-
-Follow these steps to set up the project locally on your machine.
-
-**Prerequisites**
-
-Make sure you have the following installed on your machine:
-
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
-
-**Cloning the Repository**
-
-```bash
-git clone git@github.com:adrianhajdin/project_3D_developer_portfolio.git
-cd project_3D_developer_portfolio
+```
+src/
+├── assets/           # Static assets (images, 3D models, etc.)
+├── components/       # Reusable React components
+│   ├── canvas/       # 3D components
+│   ├── sections/     # Page sections
+│   └── ui/           # UI components
+├── constants/        # Constants and data
+├── styles/           # Global styles
+└── utils/            # Utility functions
 ```
 
-**Installation**
+## 🛠️ Available Scripts
 
-Install the project dependencies using npm:
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-```bash
-npm install
-```
+## 📄 License
 
-**Set Up Environment Variables**
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Create a new file named `.env` in the root of your project and add the following content:
+## 🙏 Acknowledgments
 
-```env
-REACT_APP_EMAILJS_USERID=your_emailjs_user_id
-REACT_APP_EMAILJS_TEMPLATEID=your_emailjs_template_id
-REACT_APP_EMAILJS_RECEIVERID=your_emailjs_receiver_id
-```
-
-Replace the placeholder values with your actual EmailJS credentials. You can obtain these credentials by signing up on the [EmailJS website](https://www.emailjs.com/).
-
-**Running the Project**
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:5173](http://localhost:5173) in your browser to view the project.
-
-## <a name="snippets">🕸️ Snippets</a>
-
-<details>
-<summary><code>constants.js</code></summary>
-
-```javascript
-import {
-  mobile,
-  backend,
-  creator,
-  web,
-  javascript,
-  typescript,
-  html,
-  css,
-  reactjs,
-  redux,
-  tailwind,
-  nodejs,
-  mongodb,
+- [Three.js](https://threejs.org/) - For the amazing 3D library
+- [React Three Fiber](https://github.com/pmndrs/react-three-fiber) - For the React renderer
+- [Framer Motion](https://www.framer.com/motion/) - For smooth animations
+- [Tailwind CSS](https://tailwindcss.com/) - For utility-first CSS
+- [EmailJS](https://www.emailjs.com/) - For contact form functionality
   git,
   figma,
   docker,

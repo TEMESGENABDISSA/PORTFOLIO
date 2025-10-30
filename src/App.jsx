@@ -13,12 +13,10 @@ import {
   Navbar,
   Tech,
   Works,
+  Testimonials,
   StarsCanvas,
-  Chatbot,
   Footer,
 } from "./components";
-import Testimonials from "./components/Testimonials";
-import "./styles/testimonials.css";
 
 const App = () => {
   const { theme } = useTheme();
@@ -90,7 +88,6 @@ const App = () => {
             </Suspense>
           </div>
         </div>
-        <Chatbot />
         <Footer />
       </BrowserRouter>
     </ErrorBoundary>

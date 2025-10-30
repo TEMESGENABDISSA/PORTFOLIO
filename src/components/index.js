@@ -11,9 +11,9 @@ import Tech from "./Tech";
 import Experience from "./Experience";
 import Works from "./Works";
 import Feedbacks from "./Feedbacks";
+import Testimonials from "./Testimonials";
 import Contact from "./Contact";
 import CanvasLoader from "./Loader";
-import Chatbot from "./Chatbot";
 import Footer from "./Footer";
 
 export {
@@ -24,12 +24,12 @@ export {
   Experience,
   Works,
   Feedbacks,
+  Testimonials,
   Contact,
   CanvasLoader,
   LaptopCanvas,
   BallCanvas,
   ComputersCanvas,
   StarsCanvas,
-  Chatbot,
   Footer,
 };

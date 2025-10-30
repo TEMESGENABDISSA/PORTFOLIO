@@ -4,6 +4,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Project tag colors */
+.tag-red {
+  color: #FF5F57;
+}
+
+.tag-yellow {
+  color: #FACC15;
+}
+
+.tag-green {
+  color: #96FF2E;
+}
+
+.tag-orange {
+  color: #FF8500;
+}
+
+.tag-blue {
+  color: #0071CC;
+}
+
 * {
   margin: 0;
   padding: 0;

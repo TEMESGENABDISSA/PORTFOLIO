@@ -5,13 +5,41 @@ import {
   Float,
   OrbitControls,
   Preload,
-  useTexture,
+  Text,
+  useTexture
 } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
 
-const Ball = (props) => {
-  const [decal] = useTexture([props.imgUrl]);
+const Ball = ({ imgUrl, name }) => {
+  const [decal] = useTexture(imgUrl ? [imgUrl] : []);
+
+  if (!imgUrl) {
+    return (
+      <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
+        <ambientLight intensity={0.25} />
+        <directionalLight position={[0, 0, 0.05]} />
+        <mesh castShadow receiveShadow scale={2.75}>
+          <icosahedronGeometry args={[1, 1]} />
+          <meshStandardMaterial
+            color="#fff8eb"
+            polygonOffset
+            polygonOffsetFactor={-5}
+            flatShading
+          />
+          <Text
+            position={[0, 0, 1]}
+            fontSize={0.3}
+            color="black"
+            anchorX="center"
+            anchorY="middle"
+          >
+            {name || 'Icon'}
+          </Text>
+        </mesh>
+      </Float>
+    );
+  }
 
   return (
     <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
@@ -20,7 +48,7 @@ const Ball = (props) => {
       <mesh castShadow receiveShadow scale={2.75}>
         <icosahedronGeometry args={[1, 1]} />
         <meshStandardMaterial
-          color='#fff8eb'
+          color="#fff8eb"
           polygonOffset
           polygonOffsetFactor={-5}
           flatShading
@@ -37,18 +65,17 @@ const Ball = (props) => {
   );
 };
 
-const BallCanvas = ({ icon }) => {
+const BallCanvas = ({ icon, name }) => {
   return (
     <Canvas
-      frameloop='demand'
+      frameloop="demand"
       dpr={[1, 2]}
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls enableZoom={false} />
-        <Ball imgUrl={icon} />
+        <Ball imgUrl={icon} name={name} />
       </Suspense>
-
       <Preload all />
     </Canvas>
   );

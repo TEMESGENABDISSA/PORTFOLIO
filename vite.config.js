@@ -17,21 +17,35 @@ export default defineConfig({
     })
   ],
   server: {
-    port: 5173,
-    strictPort: true,
+    port: 3000,
+    strictPort: false,
     open: true,
     cors: true,
     fs: {
       strict: false
     },
+    // Configure headers for development
+    headers: {
+      'Cross-Origin-Embedder-Policy': 'require-corp',
+      'Cross-Origin-Opener-Policy': 'same-origin',
+    },
     hmr: {
-      clientPort: 5173,
-      port: 5173,
+      protocol: 'ws',
       host: 'localhost',
-      protocol: 'ws'
+      host: 'localhost',
+      port: 3001,
+      clientPort: 3001
+    },
+    proxy: {
+      // Add any API proxies if needed
     }
   },
+  define: {
+    'process.env': {}
+  },
   build: {
+    target: 'esnext',
+    minify: 'esbuild',
     sourcemap: true,
     rollupOptions: {
       output: {

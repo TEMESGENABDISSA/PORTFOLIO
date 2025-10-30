@@ -1,5 +1,5 @@
-import React, { Suspense, useEffect, useState, useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import React, { Suspense, useEffect, useState, useRef, useMemo } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Preload, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 import CanvasLoader from '../Loader';
@@ -14,6 +14,27 @@ const Model = ({ isMobile }) => {
       console.error('Error loading model:', error);
     }
   );
+  
+  // Dispose of the model when the component unmounts
+  useEffect(() => {
+    return () => {
+      // Dispose of geometries, materials, and textures
+      scene.traverse((child) => {
+        if (child.isMesh) {
+          if (child.geometry) {
+            child.geometry.dispose();
+          }
+          if (child.material) {
+            if (Array.isArray(child.material)) {
+              child.material.forEach(material => material.dispose());
+            } else {
+              child.material.dispose();
+            }
+          }
+        }
+      });
+    };
+  }, [scene]);
 
   // Smooth rotation
   useFrame((state, delta) => {
@@ -22,7 +43,8 @@ const Model = ({ isMobile }) => {
     }
   });
 
-  return (
+  // Memoize the model to prevent unnecessary re-renders
+  const model = useMemo(() => (
     <group ref={group} dispose={null}>
       <primitive
         object={scene}
@@ -31,7 +53,9 @@ const Model = ({ isMobile }) => {
         rotation={[-0.01, -0.2, -0.1]}
       />
     </group>
-  );
+  ), [isMobile, scene]);
+
+  return model;
 };
 
 const Lights = () => {
@@ -62,9 +86,10 @@ const Computers = ({ isMobile }) => {
 
 const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [error, setError] = useState(null);
   const canvasRef = useRef();
-
+  
   useEffect(() => {
     // Check if WebGL is supported
     try {
@@ -77,20 +102,27 @@ const ComputersCanvas = () => {
       setError('WebGL is not supported in your browser');
       return;
     }
-
+    
+    // Set mounted to true after WebGL check
+    setMounted(true);
+    
     // Handle mobile detection
     const mediaQuery = window.matchMedia('(max-width: 500px)');
     setIsMobile(mediaQuery.matches);
-
+    
     const handleMediaQueryChange = (event) => {
       setIsMobile(event.matches);
     };
-
+    
     mediaQuery.addEventListener('change', handleMediaQueryChange);
+    
     return () => {
       mediaQuery.removeEventListener('change', handleMediaQueryChange);
     };
   }, []);
+  
+  // Show nothing until we've checked WebGL support
+  if (!mounted) return null;
 
   if (error) {
     return (
@@ -130,19 +162,15 @@ const ComputersCanvas = () => {
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative' }} ref={canvasRef}>
       <Canvas
-        frameloop="demand"
+        frameloop='demand'
         shadows
         dpr={[1, 2]}
-        camera={{ 
-          position: [20, 3, 5], 
-          fov: 25, 
-          near: 0.1, 
-          far: 1000 
-        }}
+        camera={{ position: [20, 3, 5], fov: 25 }}
         gl={{
-          alpha: true,
-          antialias: true,
+          preserveDrawingBuffer: true,
           powerPreference: 'high-performance',
+          antialias: true,
+          alpha: true,
           stencil: false,
           depth: true
         }}

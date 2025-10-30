@@ -33,8 +33,8 @@ const Navbar = () => {
     <nav
       className={`${
         styles.paddingX
-      } w-full flex items-center py-5 fixed top-0 z-20 ${
-        scrolled ? "bg-primary" : "bg-transparent"
+      } w-full flex items-center py-3 sm:py-5 fixed top-0 z-20 transition-all duration-300 ${
+        scrolled ? "bg-primary/95 backdrop-blur-sm" : "bg-transparent"
       }`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
@@ -47,13 +47,15 @@ const Navbar = () => {
           }}
         >
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
-          <p className="text-white text-[18px] font-bold cursor-pointer flex ">
-            Temesgen &nbsp;
-            <span className="sm:block hidden"> | Abdissa</span>
-          </p>
+          <div className="flex items-center">
+            <p className="text-[16px] sm:text-[18px] font-bold cursor-pointer whitespace-nowrap">
+              <span className="text-[#FACC15] font-black tracking-tight">Temesgen</span>
+              <span className="text-[#FF5F57] font-black hidden xs:inline"> || Abdissa</span>
+            </p>
+          </div>
         </Link>
 
-        <ul className="list-none hidden sm:flex flex-row gap-10">
+        <ul className="list-none hidden sm:flex flex-row gap-6 lg:gap-10 items-center">
           {navLinks.map((nav) => (
             <li
               key={nav.id}
@@ -76,11 +78,17 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <div className="sm:hidden flex flex-1 justify-end items-center">
+        <div className="sm:hidden flex flex-1 justify-end items-center gap-4">
+          <button
+            onClick={toggleTheme}
+            className="p-1 rounded-full focus:outline-none text-white"
+          >
+            {theme === "dark" ? <FaSun size={20} /> : <FaMoon size={20} />}
+          </button>
           <img
             src={toggle ? close : menu}
             alt="menu"
-            className="w-[28px] h-[28px] object-contain"
+            className="w-7 h-7 object-contain"
             onClick={() => setToggle(!toggle)}
           />
 
