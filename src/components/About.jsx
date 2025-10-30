@@ -156,8 +156,8 @@ const About = () => {
               className="mt-8"
             >
               <a
-                href="/download/cv.pdf"
-                download="Temesgen_Abdiss-CV.pdf"
+                href="/Temesgen_Abdisa_Resume.pdf"
+                download="Temesgen_Abdisa_Resume.pdf"
                 className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#915EFF] to-[#00B4D8] text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

@@ -33,8 +33,8 @@ const Footer = () => {
             Contact
           </a>
           <a
-            href="/download/cv.pdf"
-            download="Temesgen_Abdiss-CV.pdf"
+            href="/Temesgen_Abdisa_Resume.pdf"
+            download="Temesgen_Abdisa_Resume.pdf"
             className="hover:text-white transition-colors duration-300"
           >
             Download CV
