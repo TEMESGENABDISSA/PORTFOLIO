@@ -22,7 +22,7 @@ export { default as tesla } from "./company/tesla.png";
 // Project Images
 export { default as amazon } from "./Amazon.jpeg";
 export { default as apple } from "./Apple.jpeg";
-export { default as netflix } from "./Netflix.jpeg";
+export { default as netflix } from "./netflix.jpeg";
 export { default as evangadi_forum } from "./EvangadiForum.png";
 export { default as telegram_fetching } from "./Telegramfetching.png";
 export { default as AbeGeraji } from "./AbeGeraji.png";
