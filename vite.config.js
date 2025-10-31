@@ -18,8 +18,8 @@ export default defineConfig({
   ],
   server: {
     port: 3000,
-    historyApiFallback: true,
-    strictPort: false,
+    host: '0.0.0.0', // Listen on all network interfaces
+    strictPort: true, // Exit if port is in use
     open: true,
     cors: true,
     fs: {
@@ -33,12 +33,14 @@ export default defineConfig({
     hmr: {
       protocol: 'ws',
       host: 'localhost',
-      host: 'localhost',
       port: 3001,
       clientPort: 3001
     },
     proxy: {
       // Add any API proxies if needed
+    },
+    watch: {
+      usePolling: true
     }
   },
   define: {
