@@ -145,7 +145,7 @@ const About = () => {
             className="mt-6 text-gray-300 text-lg leading-relaxed space-y-4"
           >
             <p>
-              Hi, I'm <span className="text-[#915EFF] font-medium">Temesgen Abdissa</span> — a passionate <span className="text-[#00B4D8] font-medium">Software Engineer</span> & <span className="text-[#61DAFB] font-medium">Full Stack Developer</span> from Ethiopia. I specialize in <span className="text-[#915EFF] font-medium">JavaScript</span>, <span className="text-[#00B4D8] font-medium">TypeScript</span>, <span className="text-[#61DAFB] font-medium">React</span>, and <span className="text-[#68A063] font-medium">Node.js</span>, building scalable, user-focused web applications that make an impact.
+              Hi, I'm <span className="text-[#915EFF] font-medium">Temesgen Abdissa</span> a passionate <span className="text-[#00B4D8] font-medium">Software Engineer</span> & <span className="text-[#61DAFB] font-medium">Full Stack Developer</span> from Ethiopia. I specialize in <span className="text-[#915EFF] font-medium">JavaScript</span>, <span className="text-[#00B4D8] font-medium">TypeScript</span>, <span className="text-[#61DAFB] font-medium">React</span>, and <span className="text-[#68A063] font-medium">Node.js</span>, building scalable, user focused web applications that make an impact.
             </p>
             <p>
               I'm inspired by <span className="text-[#FF6B6B] font-medium">AI</span> and <span className="text-[#FF9F43] font-medium">Machine Learning</span>, exploring how intelligent systems can shape the future of technology. A fast learner and team player, I love turning ideas into real, meaningful products that empower communities.
