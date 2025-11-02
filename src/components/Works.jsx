@@ -205,6 +205,7 @@ const Works = () => {
           <h2 className={`${styles.sectionHeadText} text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300`}>
             Projects
           </h2>
+          <div className="mx-auto mt-2 w-20 h-1 bg-gradient-to-r from-[#915EFF] to-[#00B4D8] rounded-full"></div>
         </motion.div>
 
         <motion.div 

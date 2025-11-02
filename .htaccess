@@ -1,23 +1,14 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-  
-  # Handle Authorization Header
-  RewriteCond %{HTTP:Authorization} .
-  RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-  
-  # Redirect Trailing Slashes If Not A Folder...
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_URI} (.+)/$
-  RewriteRule ^ %1 [L,R=301]
-  
-  # Send Requests To Front Controller...
-  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteRule ^ index.html [L]
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule . /index.html [L]
 </IfModule>
 
-# Enable GZIP Compression
+# Enable GZIP compression
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/plain
   AddOutputFilterByType DEFLATE text/html
@@ -33,34 +24,34 @@
   AddOutputFilterByType DEFLATE font/opentype font/ttf font/eot font/otf
 </IfModule>
 
-# Set browser caching for static assets
-<IfModule mod_headers.c>
-  <FilesMatch "\.(ico|jpe?g|png|gif|swf|svg|css|js|woff2?|ttf|eot)$">
-    Header set Cache-Control "public, max-age=31536000, immutable"
-  </FilesMatch>
-  
-  <FilesMatch "\.(html|htm|php)$">
-    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
-    Header set Pragma "no-cache"
-  </FilesMatch>
+# Browser caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/pdf "access plus 1 month"
+  ExpiresByType text/x-javascript "access plus 1 month"
+  ExpiresByType application/x-shockwave-flash "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresDefault "access plus 2 days"
 </IfModule>
 
 # Security Headers
 <IfModule mod_headers.c>
-  # Protect against XSS attacks
-  Header set X-XSS-Protection "1; mode=block"
-  
-  # Prevent MIME-type sniffing
   Header set X-Content-Type-Options "nosniff"
-  
-  # Enable X-Frame-Options to prevent clickjacking
   Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
   
-  # Enable HSTS (HTTP Strict Transport Security)
-  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-  
-  # Enable CSP (Content Security Policy)
-  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://www.google-analytics.com;"
+  # Enable CORS for fonts
+  <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css|css)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
 </IfModule>
 
 # Disable directory browsing
