@@ -4,6 +4,23 @@ import { testimonials } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { textVariant, fadeIn } from '../utils/motion';
 
+// Import all avatar images
+import DefaultAvatar from '../assets/avatar.png';
+import tsegishImg from '../assets/tsegish.jpg';
+import fasikaImg from '../assets/Fasika.jpg';
+import manAvatar from '../assets/Manavatar.jpg';
+import womanAvatar from '../assets/womanavatar.jpg';
+
+// Map of image paths to imported images
+const imageMap = {
+  '/src/assets/tsegish.jpg': tsegishImg,
+  '/src/assets/Fasika.jpg': fasikaImg,
+  'src/assets/tsegish.jpg': tsegishImg,
+  'src/assets/Fasika.jpg': fasikaImg,
+  'src/assets/Manavatar.jpg': manAvatar,
+  'src/assets/womanavatar.jpg': womanAvatar,
+};
+
 const TestimonialCard = ({ testimonial, isActive, index }) => {
   const cardRef = useRef(null);
   const isInView = useInView(cardRef, { once: true, amount: 0.1 });
@@ -22,6 +39,31 @@ const TestimonialCard = ({ testimonial, isActive, index }) => {
   const handleImageError = (e) => {
     e.target.style.display = 'none';
     e.target.nextElementSibling.style.display = 'flex';
+  };
+
+  // Get the correct image source
+  const getImageSource = (imgPath) => {
+    if (!imgPath) return DefaultAvatar;
+    
+    try {
+      // Check if the path exists in our image map
+      if (imgPath in imageMap) {
+        return imageMap[imgPath];
+      }
+      
+      // Fallback to the getImage function
+      const imgSrc = getImage(imgPath);
+      
+      // If we got a module with a default export, use that
+      if (imgSrc && typeof imgSrc === 'object' && 'default' in imgSrc) {
+        return imgSrc.default;
+      }
+      
+      return imgSrc || DefaultAvatar;
+    } catch (e) {
+      console.warn('Error loading image:', imgPath, e);
+      return DefaultAvatar;
+    }
   };
 
   return (
@@ -58,7 +100,7 @@ const TestimonialCard = ({ testimonial, isActive, index }) => {
           <div className="flex items-center">
             <div className="relative flex-shrink-0 h-12 w-12 rounded-full bg-gradient-to-r from-[#915EFF] to-[#00B4D8] p-0.5">
               <img
-                src={testimonial.image}
+                src={getImageSource(testimonial.image)}
                 alt={testimonial.name}
                 className="h-full w-full rounded-full object-cover"
                 onError={handleImageError}
@@ -170,7 +212,6 @@ const Testimonials = () => {
       testimonialsRef.current[index] = el;
     }
   }, []);
-
 
   return (
     <section 

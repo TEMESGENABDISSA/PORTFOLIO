@@ -181,10 +181,13 @@ const Works = () => {
         </motion.div>
 
         <motion.div 
-          className="mx-auto max-w-4xl px-4"
+          className="mx-auto max-w-4xl px-4 mb-10"
           variants={fadeIn("", "", 0.1, 1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
         >
-          <p className="text-gray-300 text-lg leading-relaxed">
+          <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
             Following projects showcase my skills and experience through
             real-world examples of my work. Each project is briefly described with
             links to code repositories and live demos. They reflect my
