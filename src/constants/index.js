@@ -186,7 +186,7 @@ const projects = [
     deployment_link: "https://temesgen-amazon-clone.netlify.app/",
   },
   {
-    name: "Apple Landing Page",
+    name: "Apple clone",
     description:
       "A responsive landing page clone of Apple's product page, showcasing modern UI/UX design.",
     tags: [
@@ -195,7 +195,7 @@ const projects = [
       { name: "node", color: "tag-orange" },
     ],
     image: apple,
-    source_code_link: "https://github.com/temesgen-abdissa/Apple-Landing-Page",
+    source_code_link: "https://github.com/TEMESGENABDISSA/Apple_Project",
     deployment_link: "https://apple-project-six.vercel.app/",
   },
   {
@@ -211,35 +211,7 @@ const projects = [
     source_code_link: "https://github.com/TEMESGENABDISSA/Netflix_Clone",
     deployment_link: "https://temesgenabdissa.github.io/Netflix_Clone/",
   },
-  {
-    name: "Evangadi Forum",
-    description:
-      "A forum application for Evangadi Bootcamp, allowing users to post questions, answers, and interact.",
-    tags: [
-      { name: "React", color: "tag-blue" },
-      { name: "Node.js", color: "tag-orange" },
-      { name: "Express", color: "tag-yellow" },
-      { name: "MySQL", color: "tag-green" },
-      { name: "AI", color: "tag-red" },
-
-    ],
-    image: evangadi_forum,
-    source_code_link: "https://github.com/temesgen-abdissa/EvangadiForum",
-    deployment_link: "https://evangadi-forum-temesgenabdissas-projects.vercel.app",
-  },
-  {
-    name: "Telegram Fetching Bot",
-    description:
-      "A bot that fetches data from Telegram channels and groups, with configurable settings and data storage.",
-    tags: [
-      { name: "Python", color: "tag-blue" },
-      { name: "Telegram API", color: "tag-yellow" },
-      { name: "Database", color: "tag-green" },
-    ],
-    image: telegramfetching,
-    source_code_link: "https://github.com/temesgen-abdissa/TelegramFetching",
-    deployment_link: "https://t.me/Emamu_Techs",
-  },
+  
   {
     name: "AbeGeraji",
     description:
@@ -251,8 +223,36 @@ const projects = [
       { name: "Msql", color: "tag-green" },
     ],
     image: AbeGeraji,
-    source_code_link: "https://github.com/temesgen-abdissa/ABE-Garaji",
+    source_code_link: "https://github.com/TEMESGENABDISSA/Abe-Garaje",
     deployment_link: "#",
+  },
+  {
+    name: "Telegram Fetching Bot",
+    description:
+      "A bot that fetches data from Telegram channels and groups, with configurable settings and data storage.",
+    tags: [
+      { name: "Python", color: "tag-blue" },
+      { name: "Telegram API", color: "tag-yellow" },
+      { name: "Database", color: "tag-green" },
+    ],
+    image: telegramfetching,
+    source_code_link: "#",
+    deployment_link: "https://t.me/Emamu_Techs",
+  },
+  {
+    name: "Evangadi Forum",
+    description:
+      "A forum application for Evangadi Bootcamp, allowing users to post questions, answers, and interact.",
+    tags: [
+      { name: "React", color: "tag-blue" },
+      { name: "Node.js", color: "tag-orange" },
+      { name: "Express", color: "tag-yellow" },
+      { name: "MySQL", color: "tag-green" },
+      { name: "AI", color: "tag-red" },
+    ],
+    image: evangadi_forum,
+    source_code_link: "https://github.com/TEMESGENABDISSA/EVANGADI_Q-A_FORUM",
+    deployment_link: "https://evangadi-forum-temesgenabdissas-projects.vercel.app",
   },
   {
     name: "Airbnb Clone",
@@ -265,22 +265,7 @@ const projects = [
       { name: "Jinja2", color: "tag-red" },
     ],
     image: ANBNB,
-    source_code_link: "https://github.com/temesgen-abdissa/airbnb-clone",
-    deployment_link: "#",
-  },
-  {
-    name: "Airbnb 2.0",
-    description:
-      "An enhanced version of the Airbnb clone with additional features and improvements, including a custom command interpreter and interactive booking interface.",
-    tags: [
-      { name: "Python", color: "tag-blue" },
-      { name: "Flask", color: "tag-orange" },
-      { name: "HTML5", color: "tag-yellow" },
-      { name: "CSS3", color: "tag-green" },
-      { name: "JSON", color: "tag-red" },
-    ],
-    image: Airnb,
-    source_code_link: "https://github.com/TEMESGENABDISSA/AirBnB_clone_v2",
+    source_code_link: "https://github.com/TEMESGENABDISSA/AirBnB_clone_v4",
     deployment_link: "#",
   },
   {
@@ -296,8 +281,24 @@ const projects = [
     ],
     image: emamu,
     source_code_link: "https://github.com/TEMESGENABDISSA/EMAMU-MALL",
-    deployment_link: "",
+    deployment_link: "#",
   },
+  {
+    name: "Airbnb Project",
+    description:
+      "An enhanced version of the Airbnb clone with additional features and improvements, including a custom command interpreter and interactive booking interface.",
+    tags: [
+      { name: "Python", color: "tag-blue" },
+      { name: "Flask", color: "tag-orange" },
+      { name: "HTML5", color: "tag-yellow" },
+      { name: "CSS3", color: "tag-green" },
+      { name: "JSON", color: "tag-red" },
+    ],
+    image: Airnb,
+    source_code_link: "https://github.com/TEMESGENABDISSA/AirBnB_clone_v2",
+    deployment_link: "#",
+  },
+  
   {
     name: "Emamu Real Estate",
     description: "A modern real estate platform with intuitive property browsing, buying, and selling features across all devices.",
@@ -324,7 +325,7 @@ const projects = [
     ],
     image: portfolio,
     source_code_link: "https://github.com/TEMESGENABDISSA/PORTFOLIO.git",
-    deployment_link: "#",
+    deployment_link: "https://temesgen.emamutech.com",
   },
   {
     name: "FAYDA ID Verification",
@@ -340,7 +341,7 @@ const projects = [
     ],
     image: fayda,
     source_code_link: "https://github.com/TEMESGENABDISSA/INSA-FAYDA.git",
-    deployment_link: "https://fayda-finance.vercel.app/",
+    deployment_link: "#",
   },
 ];
 

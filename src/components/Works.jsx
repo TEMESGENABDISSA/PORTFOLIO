@@ -20,9 +20,21 @@ const ProjectCard = ({
   const cardRef = useRef(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if device is mobile on component mount
+  React.useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
 
   const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || isMobile) return;
     
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -31,8 +43,8 @@ const ProjectCard = ({
     setMousePosition({ x, y });
   };
 
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
+  const handleMouseEnter = () => !isMobile && setIsHovered(true);
+  const handleMouseLeave = () => !isMobile && setIsHovered(false);
 
   return (
     <motion.div 
@@ -45,37 +57,42 @@ const ProjectCard = ({
           scale: 1,
           speed: 450,
         }}
-        className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full relative overflow-hidden"
+        className="bg-tertiary p-5 rounded-2xl w-full max-w-[360px] mx-auto relative overflow-hidden group"
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         ref={cardRef}
       >
-        {/* Animated border */}
-        <div 
-          className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 pointer-events-none"
-          style={{
-            background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(145, 94, 255, 0.4), transparent 40%)`,
-            opacity: isHovered ? 1 : 0,
-            zIndex: 1,
-          }}
-        />
-        <div 
-          className="absolute inset-0 rounded-2xl p-[1px] pointer-events-none"
-          style={{
-            background: isHovered 
-              ? `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(145, 94, 255, 0.7), rgba(145, 94, 255, 0.3))` 
-              : 'rgba(255, 255, 255, 0.05)',
-            WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-            WebkitMaskComposite: 'xor',
-            maskComposite: 'exclude',
-            zIndex: 2,
-          }}
-        />
+        {/* Desktop-only animated border */}
+        {/* Hide on mobile, keep on desktop */}
+        {!isMobile && (
+          <>
+            <div 
+              className="hidden md:block absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 pointer-events-none"
+              style={{
+                background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(145, 94, 255, 0.4), transparent 40%)`,
+                opacity: isHovered ? 1 : 0,
+                zIndex: 1,
+              }}
+            />
+            <div 
+              className="hidden md:block absolute inset-0 rounded-2xl p-[1px] pointer-events-none"
+              style={{
+                background: isHovered 
+                  ? `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(145, 94, 255, 0.7), rgba(145, 94, 255, 0.3))` 
+                  : 'rgba(255, 255, 255, 0.05)',
+                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                WebkitMaskComposite: 'xor',
+                maskComposite: 'exclude',
+                zIndex: 2,
+              }}
+            />
+          </>
+        )}
+        {/* End Desktop-only animated border */}
         
         <div className="relative z-10">
           <div
-            onClick={() => deployment_link && window.open(deployment_link, "_blank")}
             className="relative w-full h-[230px] cursor-pointer flex items-center justify-center bg-black/5 rounded-2xl overflow-hidden p-2"
           >
             <img
@@ -92,69 +109,79 @@ const ProjectCard = ({
               }}
             />
 
-            <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
-              {/* GitHub icon */}
-              <a
-                href={source_code_link}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
-                className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-              >
-                <img
-                  src={github}
-                  alt="source code"
-                  className="w-1/2 h-1/2 object-contain"
-                />
-              </a>
+            <div className="absolute inset-0 flex justify-end m-3 card-img_hover" style={{pointerEvents: 'none', zIndex: 11}}>
+              {/* Always render GitHub icon if there is a source_code_link */}
+              {source_code_link && (
+                <a
+                  href={source_code_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={e => { e.stopPropagation(); }}
+                  className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+                  style={{ pointerEvents: 'auto', zIndex: 12 }}
+                >
+                  <img
+                    src={github}
+                    alt="source code"
+                    className="w-1/2 h-1/2 object-contain"
+                  />
+                </a>
+              )}
+            </div>
 
-            {/* Only show View Project overlay if there's a deployment link */}
+            {/* Always render View Project overlay if there is a deployment_link */}
             {deployment_link && (
               <div
-                className="absolute inset-0 flex justify-center items-center"
-                style={{ opacity: 0, transition: "opacity 0.3s ease" }}
-                onMouseEnter={(e) => (e.currentTarget.style.opacity = 1)}
-                onMouseLeave={(e) => (e.currentTarget.style.opacity = 0)}
+                className={`absolute inset-0 flex justify-center items-center transition-opacity duration-300
+                  ${isMobile ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}
+                `}
+                style={{
+                  background: isMobile ? 'rgba(0,0,0,0.5)' : 'rgba(0, 0, 0, 0.7)',
+                  backdropFilter: 'blur(2px)',
+                  pointerEvents: 'auto',
+                  zIndex: 10, // lower than GitHub
+                }}
                 onClick={(e) => {
                   e.stopPropagation();
                   window.open(deployment_link, "_blank");
                 }}
               >
-                <span className="text-white text-lg font-bold">View Project</span>
+                <span className="text-white text-lg font-bold px-4 py-2 bg-primary/90 rounded-lg">
+                  View Project
+                </span>
               </div>
             )}
           </div>
-        </div>
 
-        <div className="mt-5">
-          <h3 className="text-primary-text font-bold text-[24px]">{name}</h3>
-          <p className="mt-2 text-secondary-text text-[14px]">{description}</p>
-        </div>
+          <div className="mt-5 relative z-10">
+            <h3 className="text-primary-text dark:text-white font-bold text-[20px] sm:text-[24px]">{name}</h3>
+            <p className="mt-2 text-secondary-text dark:text-gray-300 text-[13px] sm:text-[14px]">{description}</p>
+          </div>
 
-        <div className="mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <p
-              key={`${name}-${tag.name}`}
-              className={`text-[14px] ${tag.color}`}
-            >
-              #{tag.name}
-            </p>
-          ))}
+          <div className="mt-4 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <p
+                key={`${name}-${tag.name}`}
+                className={`text-[14px] ${tag.color}`}
+              >
+                #{tag.name}
+              </p>
+            ))}
+          </div>
+          {/* Dynamic border effect - Desktop only */}
+          {!isMobile && (
+            <div 
+              className="absolute inset-0 rounded-2xl pointer-events-none"
+              style={{
+                border: `2px solid rgba(145, 94, 255, 0.7)`,
+                borderRadius: '2xl',
+                opacity: isHovered ? 1 : 0,
+                transition: 'opacity 0.3s ease',
+                zIndex: 3,
+              }}
+            />
+          )}
         </div>
-        {/* Dynamic border effect */}
-        <div 
-          className="absolute inset-0 rounded-2xl pointer-events-none"
-          style={{
-            border: `2px solid rgba(145, 94, 255, 0.7)`,
-            borderRadius: '2xl',
-            opacity: isHovered ? 1 : 0,
-            transition: 'opacity 0.3s ease',
-            zIndex: 3,
-          }}
-        />
-      </div>
       </Tilt>
     </motion.div>
   );
@@ -197,7 +224,7 @@ const Works = () => {
         </motion.div>
       </div>
 
-      <div className="mt-10 mb-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 px-4 sm:px-0">
+      <div className="w-full max-w-7xl mx-auto mt-10 mb-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 px-4 sm:px-6 lg:px-8">
         {projects.map((project, index) => (
           <div key={`project-${index}`} className="w-full">
             <ProjectCard index={index} {...project} />
@@ -208,4 +235,4 @@ const Works = () => {
   );
 };
 
-export default SectionWrapper(Works, "");
+export default Works;
